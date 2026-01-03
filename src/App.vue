@@ -2,8 +2,8 @@
 import { ref, useTemplateRef } from "vue";
 import Renderer from "./components/Renderer.vue";
 
-const equation1 = ref("x*(pow(x, 2.0) + pow(y, 2.0) - 1.0)");
-const equation2 = ref("0.0");
+const equation1 = ref("x*(x^2 + y^2 - 4)");
+const equation2 = ref("0");
 
 const rendererRef = useTemplateRef("renderer");
 </script>
