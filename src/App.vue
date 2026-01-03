@@ -13,18 +13,14 @@ const rendererRef = useTemplateRef("renderer");
     <h1 class="text-4xl">Equation Vis</h1>
     <h2 class="mb-4">Visualize math equations as a heatmap</h2>
     <p>Enter equation</p>
-    <p class="text-xs text-neutral-300">
-      Equation should be a valid GLSL expression in terms of x and y.
-      <br />
-      All numbers must be floats.
-    </p>
+    <p class="text-xs text-neutral-300">Equation should be in terms of x and y.</p>
     <div class="flex max-w-full items-center gap-1">
       <div>
         <input
           type="text"
           class="w-full border border-neutral-700 px-2 py-1 outline-0"
           v-model="equation1"
-          placeholder="y"
+          placeholder="LHS"
         />
       </div>
       <p>=</p>
@@ -33,7 +29,7 @@ const rendererRef = useTemplateRef("renderer");
           type="text"
           class="w-full border border-neutral-700 px-2 py-1 outline-0"
           v-model="equation2"
-          placeholder="pow(x, 2) - 1"
+          placeholder="RHS"
         />
       </div>
     </div>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { exprToGlsl } from "@/lib/math";
 import { onMounted, useTemplateRef } from "vue";
 
 const { equation1, equation2 } = defineProps({
@@ -32,10 +33,10 @@ precision mediump float;
 float scale = 20.0;
 float equation1(float x, float y) {
   // return x/((x*x)+(y*y));
-  return ${equation1};
+  return ${exprToGlsl(equation1)};
 }
 float equation2(float x, float y) {
-  return ${equation2};
+  return ${exprToGlsl(equation2)};
 }
 float a(float x, float y) {
   return abs(equation1((x-256.0)/512.0*scale, (y-256.0)/512.0*scale) - equation2((x-256.0)/512.0*scale, (y-256.0)/512.0*scale) );
