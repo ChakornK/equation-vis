@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Libre Baskerville", serif;
+}
+
+body {
+  @apply bg-neutral-900 font-serif text-white;
+}
