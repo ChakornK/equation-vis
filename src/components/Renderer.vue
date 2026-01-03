@@ -74,5 +74,5 @@ defineExpose({ vis });
 </script>
 
 <template>
-  <canvas width="512" height="512" ref="canvas"></canvas>
+  <canvas class="max-w-full" width="512" height="512" ref="canvas"></canvas>
 </template>
