@@ -9,7 +9,7 @@ const rendererRef = useTemplateRef("renderer");
 </script>
 
 <template>
-  <main class="flex flex-col items-center gap-2 p-8 text-center">
+  <main class="flex flex-col items-center gap-2 px-2 py-8 text-center">
     <h1 class="text-4xl">Equation Vis</h1>
     <h2 class="mb-4">Visualize math equations as a heatmap</h2>
     <p>Enter equation</p>
