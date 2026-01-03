@@ -17,6 +17,7 @@ export const exprToGlsl = (e: string) => {
         return node.value.toFixed(1);
       }
     },
+    implicit: "show",
   });
   console.log(ret);
   return ret;
