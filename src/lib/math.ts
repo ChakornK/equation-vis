@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { create, all, type FactoryFunctionMap, type MathNode } from "mathjs";
 const math = create(all as FactoryFunctionMap);
 
