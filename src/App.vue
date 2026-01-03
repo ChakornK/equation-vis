@@ -2,8 +2,8 @@
 import { ref, useTemplateRef } from "vue";
 import Renderer from "./components/Renderer.vue";
 
-const equation1 = ref("");
-const equation2 = ref("");
+const equation1 = ref("x*(pow(x, 2.0) + pow(y, 2.0) - 1.0)");
+const equation2 = ref("0.0");
 
 const rendererRef = useTemplateRef("renderer");
 </script>
@@ -14,7 +14,9 @@ const rendererRef = useTemplateRef("renderer");
     <h2 class="mb-4">Visualize math equations as a heatmap</h2>
     <p>Enter equation</p>
     <p class="text-xs text-neutral-300">
-      Equation should be a valid GLSL expression in terms of x and y
+      Equation should be a valid GLSL expression in terms of x and y.
+      <br />
+      All numbers must be floats.
     </p>
     <p>
       <input
