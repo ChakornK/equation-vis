@@ -18,21 +18,25 @@ const rendererRef = useTemplateRef("renderer");
       <br />
       All numbers must be floats.
     </p>
-    <p>
-      <input
-        type="text"
-        class="border border-neutral-700 px-2 py-1 outline-0"
-        v-model="equation1"
-        placeholder="y"
-      />
-      =
-      <input
-        type="text"
-        class="border border-neutral-700 px-2 py-1 outline-0"
-        v-model="equation2"
-        placeholder="pow(x, 2) - 1"
-      />
-    </p>
+    <div class="flex max-w-full items-center gap-1">
+      <div>
+        <input
+          type="text"
+          class="w-full border border-neutral-700 px-2 py-1 outline-0"
+          v-model="equation1"
+          placeholder="y"
+        />
+      </div>
+      <p>=</p>
+      <div>
+        <input
+          type="text"
+          class="w-full border border-neutral-700 px-2 py-1 outline-0"
+          v-model="equation2"
+          placeholder="pow(x, 2) - 1"
+        />
+      </div>
+    </div>
 
     <button class="cursor-pointer bg-neutral-800 px-4 py-2" @click="rendererRef?.vis()">
       Visualize!
