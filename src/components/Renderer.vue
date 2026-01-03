@@ -30,9 +30,13 @@ const vis = () => {
 
   const fs = `
 precision mediump float;
+
+float c_pow(float a, float b) {
+  return pow(abs(a), b);
+}
+
 float scale = 20.0;
 float equation1(float x, float y) {
-  // return x/((x*x)+(y*y));
   return ${exprToGlsl(equation1)};
 }
 float equation2(float x, float y) {

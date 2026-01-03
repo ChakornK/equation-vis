@@ -6,7 +6,7 @@ export const exprToGlsl = (e: string) => {
   expression = math.simplify(expression);
   expression = expression.transform((node) => {
     if (node.op === "^") {
-      return new math.FunctionNode("pow", [node.args[0], node.args[1]]);
+      return new math.FunctionNode("c_pow", [node.args[0], node.args[1]]);
     }
     return node;
   });
