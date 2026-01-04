@@ -2,7 +2,7 @@
 import { ref, useTemplateRef, watchEffect } from "vue";
 import Renderer from "./components/Renderer.vue";
 
-const equation1 = ref("x*(x^2 + y^2 - 4)");
+const equation1 = ref("min(abs(y * (x^0.2 + y^0.2 - 4) * 67sin(x * y)), abs(y * (x^2 + y^2 - 4)))");
 const equation2 = ref("0");
 
 const rendererRef = useTemplateRef("renderer");
