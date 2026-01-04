@@ -5,15 +5,19 @@ precision mediump float;
 #include functions/gamma.glsl;
 #include functions/pow.glsl;
 
-float scale = 20.0;
-float falloff = 3.5;
+#CONST_SCALE;
+#CONST_FALLOFF;
+#CONST_WIDTH;
+#CONST_HEIGHT;
 
 float rFalloff = 1.0 / falloff;
 
-EQDEFS;
+#FN_EQ1;
+#FN_EQ2;
+#FN_GRADIENT;
 
 float calc(float x, float y) {
-  return rFalloff * abs(equation1((x - 256.0) / 512.0 * scale, (y - 256.0) / 512.0 * scale) - equation2((x - 256.0) / 512.0 * scale, (y - 256.0) / 512.0 * scale));
+  return rFalloff * abs(equation1((x - (0.5 * width)) / width * scale, (y - (0.5 * height)) / width * scale) - equation2((x - (0.5 * width)) / width * scale, (y - (0.5 * height)) / width * scale));
 }
 void main() {
   float n = calc(gl_FragCoord.x, gl_FragCoord.y);

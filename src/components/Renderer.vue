@@ -27,18 +27,26 @@ const vis = () => {
   const gl = canvas.getContext("webgl");
   if (!gl) return alert("WebGL not supported");
 
-  const fs = fragment.replace(
-    "EQDEFS;",
-    `
+  let fs = fragment;
+
+  const replaceMap = {
+    CONST_SCALE: `float scale = 20.0;`,
+    CONST_FALLOFF: `float falloff = 3.5;`,
+    CONST_WIDTH: `float width = 512.0;`,
+    CONST_HEIGHT: `float height = 512.0;`,
+    FN_EQ1: `
 float equation1(float x, float y) {
   return ${exprToGlsl(equation1)};
-}
+}`,
+    FN_EQ2: `
 float equation2(float x, float y) {
   return ${exprToGlsl(equation2)};
-}
-${glslGradient(themes.argon)}
-`,
-  );
+}`,
+    FN_GRADIENT: glslGradient(themes.argon),
+  };
+  for (const k in replaceMap) {
+    fs = fs.replace(`#${k};`, replaceMap[k as keyof typeof replaceMap]);
+  }
 
   gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
   gl.clearColor(0, 0, 0, 1);
