@@ -6,12 +6,16 @@ const math = create(all as FactoryFunctionMap);
 export const exprToGlsl = (e: string) => {
   let expression = math.parse(e);
   expression = math.simplify(expression);
-  expression = expression.transform((node) => {
+  const transformer = (node) => {
     if (node.op === "^") {
-      return new math.FunctionNode("c_pow", [node.args[0], node.args[1]]);
+      return new math.FunctionNode("c_pow", [
+        node.args[0].transform(transformer),
+        node.args[1].transform(transformer),
+      ]);
     }
     return node;
-  });
+  };
+  expression = expression.transform(transformer);
 
   const ret = expression.toString({
     handler: (node: MathNode) => {
