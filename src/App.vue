@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { ref, useTemplateRef } from "vue";
+import { ref, useTemplateRef, watchEffect } from "vue";
 import Renderer from "./components/Renderer.vue";
 
 const equation1 = ref("x*(x^2 + y^2 - 4)");
 const equation2 = ref("0");
 
 const rendererRef = useTemplateRef("renderer");
+watchEffect(() => {
+  rendererRef.value?.vis({ equation1: equation1.value, equation2: equation2.value });
+});
 </script>
 
 <template>
@@ -34,10 +37,6 @@ const rendererRef = useTemplateRef("renderer");
       </div>
     </div>
 
-    <button class="cursor-pointer bg-neutral-800 px-4 py-2" @click="rendererRef?.vis()">
-      Visualize!
-    </button>
-
-    <Renderer :equation1="equation1" :equation2="equation2" ref="renderer" />
+    <Renderer ref="renderer" />
   </main>
 </template>
