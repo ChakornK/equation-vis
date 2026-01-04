@@ -2,6 +2,7 @@
 import { glslGradient, themes } from "@/lib/gradient";
 import { exprToGlsl } from "@/lib/math";
 import { onMounted, ref, useTemplateRef } from "vue";
+import CarbonWarningAlt from "~icons/carbon/warning-alt";
 
 import fragment from "../shader/fragment.glsl";
 import vertex from "../shader/vertex.glsl";
@@ -79,7 +80,6 @@ float equation2(float x, float y) {
     errorMsg.value = (e as Error).message;
   }
 };
-onMounted(vis);
 
 defineExpose({ vis });
 </script>
@@ -98,5 +98,19 @@ defineExpose({ vis });
       :height="height"
       ref="canvas"
     ></canvas>
+    <div
+      v-if="errorMsg"
+      class="peer absolute left-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-red-500"
+    >
+      <CarbonWarningAlt class="-mt-1 h-4 w-4" />
+    </div>
+    <div
+      class="absolute left-2 top-11 hidden max-w-full border border-neutral-600 bg-neutral-800 p-4 text-left font-mono peer-hover:block"
+    >
+      <p>Error</p>
+      <p class="text-sm text-neutral-300">
+        <span class="block" v-for="l in errorMsg.split('\n')">{{ l }}</span>
+      </p>
+    </div>
   </div>
 </template>

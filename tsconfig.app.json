@@ -9,6 +9,6 @@
       "@/*": ["./src/*"]
     },
 
-    "types": ["vite-plugin-glsl/ext"]
+    "types": ["vite-plugin-glsl/ext", "unplugin-icons/types/vue"]
   }
 }
