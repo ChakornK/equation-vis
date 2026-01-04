@@ -7,11 +7,14 @@ export const exprToGlsl = (e: string) => {
   let expression = math.parse(e);
   expression = math.simplify(expression);
   const transformer = (node) => {
-    if (node.op === "^") {
+    if (node.op === "^" || node.fn === "pow") {
       return new math.FunctionNode("c_pow", [
         node.args[0].transform(transformer),
         node.args[1].transform(transformer),
       ]);
+    }
+    if (node.op === "!" || node.fn === "factorial") {
+      return new math.FunctionNode("c_gamma", [node.args[0].transform(transformer)]);
     }
     return node;
   };
