@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { glslGradient, themes } from "@/lib/gradient";
 import { exprToGlsl } from "@/lib/math";
 import { onMounted, useTemplateRef } from "vue";
 
@@ -36,17 +37,24 @@ float c_pow(float a, float b) {
 }
 
 float scale = 20.0;
+float falloff = 3.5;
+
+float rFalloff = 1.0 / falloff;
+
 float equation1(float x, float y) {
   return ${exprToGlsl(equation1)};
 }
 float equation2(float x, float y) {
   return ${exprToGlsl(equation2)};
 }
+${glslGradient(themes.argon)}
+
 float a(float x, float y) {
-  return abs(equation1((x-256.0)/512.0*scale, (y-256.0)/512.0*scale) - equation2((x-256.0)/512.0*scale, (y-256.0)/512.0*scale) );
+  return rFalloff*abs(equation1((x-256.0)/512.0*scale, (y-256.0)/512.0*scale) - equation2((x-256.0)/512.0*scale, (y-256.0)/512.0*scale) );
 }
 void main() {
-  gl_FragColor = vec4(1.0-a(gl_FragCoord.x, gl_FragCoord.y), 0, 0, 1);
+  float n = a(gl_FragCoord.x, gl_FragCoord.y);
+  gl_FragColor = gradient(n);
 }
 `;
 
