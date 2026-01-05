@@ -12,5 +12,6 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     Renderer: typeof import('./src/components/Renderer.vue')['default']
+    ThemeDropdown: typeof import('./src/components/ThemeDropdown.vue')['default']
   }
 }

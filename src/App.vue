@@ -2,6 +2,7 @@
 import { ref, useTemplateRef, watchEffect } from "vue";
 import Renderer from "./components/Renderer.vue";
 import { themes } from "./lib/gradient";
+import ThemeDropdown from "./components/ThemeDropdown.vue";
 
 const equation1 = ref("min(abs(y * (x^0.2 + y^0.2 - 4) * 67sin(x * y)), abs(y * (x^2 + y^2 - 4)))");
 const equation2 = ref("0");
@@ -48,12 +49,13 @@ watchEffect(() => {
           >, <a href="https://github.com/ghosh/uiGradients/blob/master/gradients.json">source 2</a>)
         </span>
       </p>
-      <select
+      <!-- <select
         class="w-full border border-neutral-700 bg-neutral-900 px-2 py-1 outline-0"
         v-model="theme"
       >
         <option v-for="(colors, name) in themes" :value="colors">{{ name }}</option>
-      </select>
+      </select> -->
+      <ThemeDropdown :itemMap="themes" v-model="theme" />
     </div>
 
     <Renderer ref="renderer" :theme="theme" />
