@@ -42,11 +42,11 @@ watchEffect(() => {
     <div>
       <p>
         Theme
-        <a
-          href="https://github.com/ghosh/uiGradients/blob/master/gradients.json"
-          class="text-[0.625rem] text-neutral-400"
-          >(source)</a
-        >
+        <span class="text-[0.625rem] text-neutral-400">
+          (<a href="https://github.com/axismaps/colorbrewer/blob/master/colorbrewer_schemes.js"
+            >source 1</a
+          >, <a href="https://github.com/ghosh/uiGradients/blob/master/gradients.json">source 2</a>)
+        </span>
       </p>
       <select
         class="w-full border border-neutral-700 bg-neutral-900 px-2 py-1 outline-0"
