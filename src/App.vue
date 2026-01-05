@@ -1,9 +1,12 @@
 <script setup lang="ts">
 import { ref, useTemplateRef, watchEffect } from "vue";
 import Renderer from "./components/Renderer.vue";
+import { themes } from "./lib/gradient";
 
 const equation1 = ref("min(abs(y * (x^0.2 + y^0.2 - 4) * 67sin(x * y)), abs(y * (x^2 + y^2 - 4)))");
 const equation2 = ref("0");
+
+const theme = ref(themes["Argon"]);
 
 const rendererRef = useTemplateRef("renderer");
 watchEffect(() => {
@@ -36,7 +39,23 @@ watchEffect(() => {
         />
       </div>
     </div>
+    <div>
+      <p>
+        Theme
+        <a
+          href="https://github.com/ghosh/uiGradients/blob/master/gradients.json"
+          class="text-[0.625rem] text-neutral-400"
+          >(source)</a
+        >
+      </p>
+      <select
+        class="w-full border border-neutral-700 bg-neutral-900 px-2 py-1 outline-0"
+        v-model="theme"
+      >
+        <option v-for="(colors, name) in themes" :value="colors">{{ name }}</option>
+      </select>
+    </div>
 
-    <Renderer ref="renderer" />
+    <Renderer ref="renderer" :theme="theme" />
   </main>
 </template>

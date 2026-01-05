@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { glslGradient, themes } from "@/lib/gradient";
 import { exprToGlsl } from "@/lib/math";
-import { onMounted, ref, useTemplateRef } from "vue";
+import { ref, useTemplateRef } from "vue";
 import CarbonWarningAlt from "~icons/carbon/warning-alt";
 
 import fragment from "../shader/fragment.glsl";
 import vertex from "../shader/vertex.glsl";
+
+const { theme } = defineProps<{ theme: string[] }>();
 
 const width = 512;
 const height = 512;
@@ -44,7 +46,7 @@ float equation1(float x, float y) {
 float equation2(float x, float y) {
   return ${exprToGlsl(equation2)};
 }`,
-      FN_GRADIENT: glslGradient(themes.argon),
+      FN_GRADIENT: glslGradient(theme),
     };
     for (const k in replaceMap) {
       fs = fs.replace(`#${k};`, replaceMap[k as keyof typeof replaceMap]);
