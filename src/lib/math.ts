@@ -32,5 +32,5 @@ export const exprToGlsl = (e: string) => {
 };
 
 export const toFloat = (n: number) => {
-  return n >= 10 ? n.toFixed(1) : n.toPrecision(2);
+  return Math.abs(n) >= 1 || n === 0 ? n.toFixed(1) : n;
 };
