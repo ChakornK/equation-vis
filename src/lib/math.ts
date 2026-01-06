@@ -28,6 +28,5 @@ export const exprToGlsl = (e: string) => {
     },
     implicit: "show",
   });
-  console.log(ret);
   return ret;
 };
