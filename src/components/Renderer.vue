@@ -141,7 +141,7 @@ const vis = ({
   try {
     const canvas = canvasRef.value;
     if (!canvas) return;
-    const gl = canvas.getContext("webgl");
+    const gl = canvas.getContext("webgl2");
     if (!gl) throw new Error("WebGL not supported");
 
     let fs = fragment;
