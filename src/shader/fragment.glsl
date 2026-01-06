@@ -24,6 +24,5 @@ float calc(float x, float y) {
   return rFalloff * abs(equation1(valX, valY) - equation2(valX, valY));
 }
 void main() {
-  float n = calc(gl_FragCoord.x, gl_FragCoord.y);
-  gl_FragColor = gradient(n);
+  gl_FragColor = gradient(calc(gl_FragCoord.x, gl_FragCoord.y));
 }

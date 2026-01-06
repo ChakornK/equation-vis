@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { glslGradient, themes } from "@/lib/gradient";
-import { exprToGlsl } from "@/lib/math";
+import { exprToGlsl, toFloat } from "@/lib/math";
 import { onMounted, onUnmounted, ref, useTemplateRef } from "vue";
 import CarbonWarningAlt from "~icons/carbon/warning-alt";
 
@@ -152,12 +152,12 @@ const vis = ({
       equationCache.value = { equation1: eq1, equation2: eq2 };
     }
     const replaceMap = {
-      CONST_VIEWPORT_SCALE: `float viewportScale = ${viewportScale.value.toFixed(3)};`,
-      CONST_VIEWPORT_X: `float viewportX = ${viewportX.value.toFixed(3)};`,
-      CONST_VIEWPORT_Y: `float viewportY = ${viewportY.value.toFixed(3)};`,
+      CONST_VIEWPORT_SCALE: `float viewportScale = ${toFloat(viewportScale.value)};`,
+      CONST_VIEWPORT_X: `float viewportX = ${toFloat(viewportX.value)};`,
+      CONST_VIEWPORT_Y: `float viewportY = ${toFloat(viewportY.value)};`,
       CONST_FALLOFF: `float falloff = 3.5;`,
-      CONST_WIDTH: `float width = ${width.toFixed(1)};`,
-      CONST_HEIGHT: `float height = ${height.toFixed(1)};`,
+      CONST_WIDTH: `float width = ${toFloat(width)};`,
+      CONST_HEIGHT: `float height = ${toFloat(height)};`,
       FN_EQ1: `
 float equation1(float x, float y) {
   return ${eq1};

@@ -30,3 +30,7 @@ export const exprToGlsl = (e: string) => {
   });
   return ret;
 };
+
+export const toFloat = (n: number) => {
+  return n >= 10 ? n.toFixed(1) : n.toPrecision(2);
+};
