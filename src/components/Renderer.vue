@@ -1,13 +1,114 @@
 <script setup lang="ts">
 import { glslGradient, themes } from "@/lib/gradient";
 import { exprToGlsl } from "@/lib/math";
-import { ref, useTemplateRef } from "vue";
+import { onMounted, onUnmounted, ref, useTemplateRef } from "vue";
 import CarbonWarningAlt from "~icons/carbon/warning-alt";
 
 import fragment from "../shader/fragment.glsl";
 import vertex from "../shader/vertex.glsl";
+import { throttle } from "@/lib/throttle";
 
 const { theme } = defineProps<{ theme: string[] }>();
+
+const viewportScale = ref(20);
+const viewportX = ref(0);
+const viewportY = ref(0);
+
+const rerender = () => {
+  vis(propsCache.value);
+};
+
+const viewportInitScale = ref<number | null>(null);
+const viewportInitXY = ref<{ x: number; y: number } | null>(null);
+const pointerDown = ref(false);
+const pointerStart = ref<{ id: number; x: number; y: number }[] | null>(null);
+const pointerPos = ref<{ id: number; x: number; y: number }[] | null>(null);
+const onPointerDown = (e: PointerEvent) => {
+  if (pointerStart.value === null) {
+    pointerStart.value = [];
+    pointerPos.value = [];
+    viewportInitScale.value = viewportScale.value;
+    viewportInitXY.value = { x: viewportX.value, y: viewportY.value };
+  }
+  pointerStart.value?.push({ id: e.pointerId, x: e.clientX, y: e.clientY });
+  pointerDown.value = true;
+};
+const onPointerUp = (e: PointerEvent) => {
+  if (!pointerStart.value || !pointerPos.value) return;
+  pointerStart.value = pointerStart.value.filter((p) => p.id !== e.pointerId);
+  pointerPos.value = pointerPos.value?.filter((p) => p.id !== e.pointerId);
+  if (pointerStart.value.length === 0) {
+    pointerDown.value = false;
+    pointerStart.value = null;
+    pointerPos.value = null;
+  }
+};
+const onPointerMove = (e: PointerEvent) => {
+  if (!pointerDown.value || !pointerStart.value) return;
+  pointerPos.value = pointerStart.value.map((p) => {
+    if (p.id === e.pointerId) {
+      return { id: p.id, x: e.clientX, y: e.clientY };
+    }
+    return p;
+  });
+
+  if (pointerPos.value.length === 2) {
+    const p1Start = pointerStart.value.find((p) => p.id === pointerPos.value![0]!.id);
+    const p2Start = pointerStart.value.find((p) => p.id === pointerPos.value![1]!.id);
+    if (p1Start && p2Start) {
+      const distStart = Math.hypot(p2Start.x - p1Start.x, p2Start.y - p1Start.y);
+      const distNow = Math.hypot(
+        pointerPos.value![1]!.x - pointerPos.value![0]!.x,
+        pointerPos.value![1]!.y - pointerPos.value![0]!.y,
+      );
+      const scaleChange = distNow / distStart;
+      if (viewportInitScale.value !== null) {
+        viewportScale.value = viewportInitScale.value / scaleChange;
+      }
+    }
+  }
+
+  const d = pointerPos.value
+    .map((p) => {
+      const start = pointerStart.value?.find((s) => s.id === p.id);
+      if (!start) return { x: 0, y: 0 };
+      return { x: p.x - start.x, y: p.y - start.y };
+    })
+    .reduce(
+      (acc, cur) => {
+        return {
+          x: acc.x + cur.x / pointerPos.value!.length,
+          y: acc.y + cur.y / pointerPos.value!.length,
+        };
+      },
+      { x: 0, y: 0 },
+    );
+  if (viewportInitXY.value) {
+    viewportX.value = viewportInitXY.value.x - (d.x * viewportScale.value) / width;
+    viewportY.value = viewportInitXY.value.y + (d.y * viewportScale.value) / height;
+  }
+
+  rerender();
+};
+const onScroll = (e: WheelEvent) => {
+  const delta = e.deltaY;
+  const scaleFactor = 1.05;
+  if (delta < 0) {
+    viewportScale.value /= scaleFactor;
+  } else {
+    viewportScale.value *= scaleFactor;
+  }
+  rerender();
+};
+const eventPreventDefault = (e: Event) => {
+  e.preventDefault();
+};
+onMounted(() => {
+  window.addEventListener("pointermove", throttle(onPointerMove, 16));
+});
+onUnmounted(() => {
+  window.removeEventListener("pointermove", throttle(onPointerMove, 16));
+});
 
 const width = 512;
 const height = 512;
@@ -23,9 +124,12 @@ const sh = (gl: WebGLRenderingContext, t: GLenum, s: string) => {
   return x as WebGLShader;
 };
 
+const propsCache = ref<{ equation1: string; equation2: string }>({ equation1: "", equation2: "" });
 const canvasRef = useTemplateRef<HTMLCanvasElement>("canvas");
 const vis = ({ equation1, equation2 }: { equation1: string; equation2: string }) => {
   try {
+    propsCache.value = { equation1, equation2 };
+
     const canvas = canvasRef.value;
     if (!canvas) return;
     const gl = canvas.getContext("webgl");
@@ -34,7 +138,9 @@ const vis = ({ equation1, equation2 }: { equation1: string; equation2: string })
     let fs = fragment;
 
     const replaceMap = {
-      CONST_SCALE: `float scale = 20.0;`,
+      CONST_VIEWPORT_SCALE: `float viewportScale = ${viewportScale.value.toFixed(3)};`,
+      CONST_VIEWPORT_X: `float viewportX = ${viewportX.value.toFixed(3)};`,
+      CONST_VIEWPORT_Y: `float viewportY = ${viewportY.value.toFixed(3)};`,
       CONST_FALLOFF: `float falloff = 3.5;`,
       CONST_WIDTH: `float width = ${width.toFixed(1)};`,
       CONST_HEIGHT: `float height = ${height.toFixed(1)};`,
@@ -99,6 +205,11 @@ defineExpose({ vis });
       :width="width"
       :height="height"
       ref="canvas"
+      @pointerdown="onPointerDown"
+      @pointerup="onPointerUp"
+      @wheel="onScroll"
+      @gesturestart="eventPreventDefault"
+      @touchstart="eventPreventDefault"
     ></canvas>
     <div
       v-if="errorMsg"
