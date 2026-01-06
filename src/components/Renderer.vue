@@ -15,7 +15,7 @@ const viewportX = ref(0);
 const viewportY = ref(0);
 
 const rerender = () => {
-  vis(propsCache.value);
+  vis({ useCache: true });
 };
 
 const viewportInitScale = ref<number | null>(null);
@@ -104,10 +104,10 @@ const eventPreventDefault = (e: Event) => {
   e.preventDefault();
 };
 onMounted(() => {
-  window.addEventListener("pointermove", throttle(onPointerMove, 16));
+  window.addEventListener("pointermove", throttle(onPointerMove, 8));
 });
 onUnmounted(() => {
-  window.removeEventListener("pointermove", throttle(onPointerMove, 16));
+  window.removeEventListener("pointermove", throttle(onPointerMove, 8));
 });
 
 const width = 512;
@@ -124,12 +124,21 @@ const sh = (gl: WebGLRenderingContext, t: GLenum, s: string) => {
   return x as WebGLShader;
 };
 
-const propsCache = ref<{ equation1: string; equation2: string }>({ equation1: "", equation2: "" });
+const equationCache = ref<{ equation1: string; equation2: string }>({
+  equation1: "",
+  equation2: "",
+});
 const canvasRef = useTemplateRef<HTMLCanvasElement>("canvas");
-const vis = ({ equation1, equation2 }: { equation1: string; equation2: string }) => {
+const vis = ({
+  equation1,
+  equation2,
+  useCache,
+}: {
+  equation1?: string;
+  equation2?: string;
+  useCache?: boolean;
+}) => {
   try {
-    propsCache.value = { equation1, equation2 };
-
     const canvas = canvasRef.value;
     if (!canvas) return;
     const gl = canvas.getContext("webgl");
@@ -137,6 +146,11 @@ const vis = ({ equation1, equation2 }: { equation1: string; equation2: string })
 
     let fs = fragment;
 
+    const eq1 = useCache || !equation1 ? equationCache.value.equation1 : exprToGlsl(equation1);
+    const eq2 = useCache || !equation2 ? equationCache.value.equation2 : exprToGlsl(equation2);
+    if (!useCache) {
+      equationCache.value = { equation1: eq1, equation2: eq2 };
+    }
     const replaceMap = {
       CONST_VIEWPORT_SCALE: `float viewportScale = ${viewportScale.value.toFixed(3)};`,
       CONST_VIEWPORT_X: `float viewportX = ${viewportX.value.toFixed(3)};`,
@@ -146,11 +160,11 @@ const vis = ({ equation1, equation2 }: { equation1: string; equation2: string })
       CONST_HEIGHT: `float height = ${height.toFixed(1)};`,
       FN_EQ1: `
 float equation1(float x, float y) {
-  return ${exprToGlsl(equation1)};
+  return ${eq1};
 }`,
       FN_EQ2: `
 float equation2(float x, float y) {
-  return ${exprToGlsl(equation2)};
+  return ${eq2};
 }`,
       FN_GRADIENT: glslGradient(theme),
     };

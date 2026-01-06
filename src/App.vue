@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, useTemplateRef, watchEffect } from "vue";
+import { ref, useTemplateRef, watch, watchEffect } from "vue";
 import Renderer from "./components/Renderer.vue";
 import { themes } from "./lib/gradient";
 import ThemeDropdown from "./components/ThemeDropdown.vue";
@@ -10,7 +10,7 @@ const equation2 = ref("0");
 const theme = ref(themes["Argon"]);
 
 const rendererRef = useTemplateRef("renderer");
-watchEffect(() => {
+watch([equation1, equation2, theme, rendererRef], () => {
   rendererRef.value?.vis({ equation1: equation1.value, equation2: equation2.value });
 });
 </script>
