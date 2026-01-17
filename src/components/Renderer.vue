@@ -22,6 +22,7 @@ const pointerDown = ref(false);
 const pointerStart = ref<{ id: number; x: number; y: number }[] | null>(null);
 const pointerPos = ref<{ id: number; x: number; y: number }[] | null>(null);
 const onPointerDown = (e: PointerEvent) => {
+  e.preventDefault();
   if (pointerStart.value === null) {
     pointerStart.value = [];
     pointerPos.value = [];
@@ -33,6 +34,7 @@ const onPointerDown = (e: PointerEvent) => {
   document.addEventListener("pointerup", onPointerUp, { once: true });
 };
 const onPointerUp = (e: PointerEvent) => {
+  e.preventDefault();
   if (!pointerStart.value || !pointerPos.value) return;
   pointerStart.value = pointerStart.value.filter((p) => p.id !== e.pointerId);
   pointerPos.value = pointerPos.value?.filter((p) => p.id !== e.pointerId);
@@ -44,6 +46,7 @@ const onPointerUp = (e: PointerEvent) => {
 };
 const onPointerMove = (e: PointerEvent) => {
   if (!pointerDown.value || !pointerStart.value) return;
+  e.preventDefault();
   pointerPos.value = pointerStart.value.map((p) => {
     if (p.id === e.pointerId) {
       return { id: p.id, x: e.clientX, y: e.clientY };
@@ -90,6 +93,7 @@ const onPointerMove = (e: PointerEvent) => {
   rerender();
 };
 const onScroll = (e: WheelEvent) => {
+  e.preventDefault();
   const delta = e.deltaY;
   const scaleFactor = 1.05;
   if (delta < 0) {
