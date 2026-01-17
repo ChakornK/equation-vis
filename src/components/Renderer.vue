@@ -30,6 +30,7 @@ const onPointerDown = (e: PointerEvent) => {
   }
   pointerStart.value?.push({ id: e.pointerId, x: e.clientX, y: e.clientY });
   pointerDown.value = true;
+  document.addEventListener("pointerup", onPointerUp, { once: true });
 };
 const onPointerUp = (e: PointerEvent) => {
   if (!pointerStart.value || !pointerPos.value) return;
@@ -215,7 +216,7 @@ defineExpose({ vis });
     height: `${height}px`,
   }" class="relative max-w-full">
     <canvas class="absolute inset-0 max-w-full" :width="width" :height="height" ref="canvas"
-      @pointerdown="onPointerDown" @pointerup="onPointerUp" @wheel="onScroll" @gesturestart="eventPreventDefault"
+      @pointerdown="onPointerDown" @wheel="onScroll" @gesturestart="eventPreventDefault"
       @touchstart="eventPreventDefault"></canvas>
     <div v-if="errorMsg"
       class="peer absolute left-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-red-500">
