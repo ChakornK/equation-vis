@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { glslGradient, themes } from "@/lib/gradient";
+import { glslGradient } from "@/lib/gradient";
 import { exprToGlsl, toFloat } from "@/lib/math";
 import { onMounted, onUnmounted, ref, useTemplateRef } from "vue";
 import CarbonWarningAlt from "~icons/carbon/warning-alt";
@@ -7,8 +7,6 @@ import CarbonWarningAlt from "~icons/carbon/warning-alt";
 import fragment from "../shader/fragment.glsl";
 import vertex from "../shader/vertex.glsl";
 import { throttle } from "@/lib/throttle";
-
-const { theme } = defineProps<{ theme: string[] }>();
 
 const viewportScale = ref(20);
 const viewportX = ref(0);
@@ -128,14 +126,17 @@ const equationCache = ref<{ equation1: string; equation2: string }>({
   equation1: "",
   equation2: "",
 });
+const themeCache = ref<string[]>([]);
 const canvasRef = useTemplateRef<HTMLCanvasElement>("canvas");
 const vis = ({
   equation1,
   equation2,
+  theme,
   useCache,
 }: {
   equation1?: string;
   equation2?: string;
+  theme?: string[];
   useCache?: boolean;
 }) => {
   try {
@@ -148,8 +149,10 @@ const vis = ({
 
     const eq1 = useCache || !equation1 ? equationCache.value.equation1 : exprToGlsl(equation1);
     const eq2 = useCache || !equation2 ? equationCache.value.equation2 : exprToGlsl(equation2);
+    const t = useCache || !theme ? themeCache.value : theme;
     if (!useCache) {
       equationCache.value = { equation1: eq1, equation2: eq2 };
+      themeCache.value = theme as string[];
     }
     const replaceMap = {
       CONST_VIEWPORT_SCALE: `float viewportScale = ${toFloat(viewportScale.value)};`,
@@ -166,7 +169,7 @@ float equation1(float x, float y) {
 float equation2(float x, float y) {
   return ${eq2};
 }`,
-      FN_GRADIENT: glslGradient(theme),
+      FN_GRADIENT: glslGradient(t),
     };
     for (const k in replaceMap) {
       fs = fs.replace(`#${k};`, replaceMap[k as keyof typeof replaceMap]);
@@ -207,33 +210,19 @@ defineExpose({ vis });
 </script>
 
 <template>
-  <div
-    :style="{
-      width: `${width}px`,
-      height: `${height}px`,
-    }"
-    class="relative max-w-full"
-  >
-    <canvas
-      class="absolute inset-0 max-w-full"
-      :width="width"
-      :height="height"
-      ref="canvas"
-      @pointerdown="onPointerDown"
-      @pointerup="onPointerUp"
-      @wheel="onScroll"
-      @gesturestart="eventPreventDefault"
-      @touchstart="eventPreventDefault"
-    ></canvas>
-    <div
-      v-if="errorMsg"
-      class="peer absolute left-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-red-500"
-    >
+  <div :style="{
+    width: `${width}px`,
+    height: `${height}px`,
+  }" class="relative max-w-full">
+    <canvas class="absolute inset-0 max-w-full" :width="width" :height="height" ref="canvas"
+      @pointerdown="onPointerDown" @pointerup="onPointerUp" @wheel="onScroll" @gesturestart="eventPreventDefault"
+      @touchstart="eventPreventDefault"></canvas>
+    <div v-if="errorMsg"
+      class="peer absolute left-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-red-500">
       <CarbonWarningAlt class="-mt-1 h-4 w-4" />
     </div>
     <div
-      class="absolute left-2 top-11 hidden max-w-full border border-neutral-600 bg-neutral-800 p-4 text-left font-mono peer-hover:block"
-    >
+      class="absolute left-2 top-11 hidden max-w-full border border-neutral-600 bg-neutral-800 p-4 text-left font-mono peer-hover:block">
       <p>Error</p>
       <p class="text-sm text-neutral-300">
         <span class="block" v-for="l in errorMsg.split('\n')">{{ l }}</span>

@@ -11,7 +11,7 @@ const theme = ref(themes["Argon"]);
 
 const rendererRef = useTemplateRef("renderer");
 watch([equation1, equation2, theme, rendererRef], () => {
-  rendererRef.value?.vis({ equation1: equation1.value, equation2: equation2.value });
+  rendererRef.value?.vis({ equation1: equation1.value, equation2: equation2.value, theme: theme.value });
 });
 </script>
 
@@ -23,41 +23,26 @@ watch([equation1, equation2, theme, rendererRef], () => {
     <p class="text-xs text-neutral-300">Equation should be in terms of x and y.</p>
     <div class="flex max-w-full items-center gap-1">
       <div>
-        <input
-          type="text"
-          class="w-full border border-neutral-700 px-2 py-1 outline-0"
-          v-model="equation1"
-          placeholder="LHS"
-        />
+        <input type="text" class="w-full border border-neutral-700 px-2 py-1 outline-0" v-model="equation1"
+          placeholder="LHS" />
       </div>
       <p>=</p>
       <div>
-        <input
-          type="text"
-          class="w-full border border-neutral-700 px-2 py-1 outline-0"
-          v-model="equation2"
-          placeholder="RHS"
-        />
+        <input type="text" class="w-full border border-neutral-700 px-2 py-1 outline-0" v-model="equation2"
+          placeholder="RHS" />
       </div>
     </div>
     <div>
       <p>
         Theme
         <span class="text-[0.625rem] text-neutral-400">
-          (<a href="https://github.com/axismaps/colorbrewer/blob/master/colorbrewer_schemes.js"
-            >source 1</a
-          >, <a href="https://github.com/ghosh/uiGradients/blob/master/gradients.json">source 2</a>)
+          (<a href="https://github.com/axismaps/colorbrewer/blob/master/colorbrewer_schemes.js">source 1</a>, <a
+            href="https://github.com/ghosh/uiGradients/blob/master/gradients.json">source 2</a>)
         </span>
       </p>
-      <!-- <select
-        class="w-full border border-neutral-700 bg-neutral-900 px-2 py-1 outline-0"
-        v-model="theme"
-      >
-        <option v-for="(colors, name) in themes" :value="colors">{{ name }}</option>
-      </select> -->
       <ThemeDropdown :itemMap="themes" v-model="theme" />
     </div>
 
-    <Renderer ref="renderer" :theme="theme" />
+    <Renderer ref="renderer" />
   </main>
 </template>
