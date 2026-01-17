@@ -1,16 +1,16 @@
 precision mediump float;
 
+uniform float viewportScale;
+uniform float viewportX;
+uniform float viewportY;
+uniform float width;
+uniform float height;
+uniform float falloff;
+
 #include constants.glsl;
 
 #include functions/gamma.glsl;
 #include functions/pow.glsl;
-
-#CONST_VIEWPORT_SCALE;
-#CONST_VIEWPORT_X;
-#CONST_VIEWPORT_Y;
-#CONST_FALLOFF;
-#CONST_WIDTH;
-#CONST_HEIGHT;
 
 float rFalloff = 1.0 / falloff;
 

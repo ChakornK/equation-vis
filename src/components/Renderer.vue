@@ -1,16 +1,16 @@
 <script setup lang="ts">
 import { glslGradient } from "@/lib/gradient";
-import { exprToGlsl, toFloat } from "@/lib/math";
+import { exprToGlsl } from "@/lib/math";
 import { onMounted, onUnmounted, ref, useTemplateRef } from "vue";
 import CarbonWarningAlt from "~icons/carbon/warning-alt";
 
 import fragment from "../shader/fragment.glsl";
 import vertex from "../shader/vertex.glsl";
-import { throttle } from "@/lib/throttle";
 
 const viewportScale = ref(20);
 const viewportX = ref(0);
 const viewportY = ref(0);
+const falloff = ref(3.5);
 
 const rerender = () => {
   vis({ useCache: true });
@@ -103,10 +103,10 @@ const eventPreventDefault = (e: Event) => {
   e.preventDefault();
 };
 onMounted(() => {
-  window.addEventListener("pointermove", throttle(onPointerMove, 8));
+  window.addEventListener("pointermove", onPointerMove);
 });
 onUnmounted(() => {
-  window.removeEventListener("pointermove", throttle(onPointerMove, 8));
+  window.removeEventListener("pointermove", onPointerMove);
 });
 
 const width = 512;
@@ -115,97 +115,107 @@ const height = 512;
 const errorMsg = ref("");
 
 const vs = vertex;
+const canvasRef = useTemplateRef<HTMLCanvasElement>("canvas");
 
-const sh = (gl: WebGLRenderingContext, t: GLenum, s: string) => {
-  const x = gl.createShader(t) as WebGLShader;
-  gl.shaderSource(x, s);
-  gl.compileShader(x);
-  return x as WebGLShader;
+let gl: WebGL2RenderingContext | null = null;
+let program: WebGLProgram | null = null;
+let buf: WebGLBuffer | null = null;
+
+let uScale: WebGLUniformLocation | null = null;
+let uX: WebGLUniformLocation | null = null;
+let uY: WebGLUniformLocation | null = null;
+let uW: WebGLUniformLocation | null = null;
+let uH: WebGLUniformLocation | null = null;
+let uFalloff: WebGLUniformLocation | null = null;
+
+const sh = (t: GLenum, s: string) => {
+  const x = gl!.createShader(t)!;
+  gl!.shaderSource(x, s);
+  gl!.compileShader(x);
+  return x;
 };
 
-const equationCache = ref<{ equation1: string; equation2: string }>({
-  equation1: "",
-  equation2: "",
-});
+const equationCache = ref({ equation1: "", equation2: "" });
 const themeCache = ref<string[]>([]);
-const canvasRef = useTemplateRef<HTMLCanvasElement>("canvas");
-const vis = ({
-  equation1,
-  equation2,
-  theme,
-  useCache,
-}: {
-  equation1?: string;
-  equation2?: string;
-  theme?: string[];
-  useCache?: boolean;
-}) => {
+
+const vis = ({ equation1, equation2, theme, useCache }: any) => {
   try {
     const canvas = canvasRef.value;
     if (!canvas) return;
-    const gl = canvas.getContext("webgl2");
-    if (!gl) throw new Error("WebGL not supported");
 
-    let fs = fragment;
+    if (!gl) {
+      gl = canvas.getContext("webgl2");
+      if (!gl) throw new Error("no webgl");
 
-    const eq1 = useCache || !equation1 ? equationCache.value.equation1 : exprToGlsl(equation1);
-    const eq2 = useCache || !equation2 ? equationCache.value.equation2 : exprToGlsl(equation2);
-    const t = useCache || !theme ? themeCache.value : theme;
-    if (!useCache) {
+      buf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(
+        gl.ARRAY_BUFFER,
+        new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]),
+        gl.STATIC_DRAW,
+      );
+    }
+
+    const eq1 = useCache ? equationCache.value.equation1 : exprToGlsl(equation1);
+    const eq2 = useCache ? equationCache.value.equation2 : exprToGlsl(equation2);
+    const t = useCache ? themeCache.value : theme;
+
+    if (!useCache || !program) {
       equationCache.value = { equation1: eq1, equation2: eq2 };
-      themeCache.value = theme as string[];
-    }
-    const replaceMap = {
-      CONST_VIEWPORT_SCALE: `float viewportScale = ${toFloat(viewportScale.value)};`,
-      CONST_VIEWPORT_X: `float viewportX = ${toFloat(viewportX.value)};`,
-      CONST_VIEWPORT_Y: `float viewportY = ${toFloat(viewportY.value)};`,
-      CONST_FALLOFF: `float falloff = 3.5;`,
-      CONST_WIDTH: `float width = ${toFloat(width)};`,
-      CONST_HEIGHT: `float height = ${toFloat(height)};`,
-      FN_EQ1: `
-float equation1(float x, float y) {
-  return ${eq1};
-}`,
-      FN_EQ2: `
-float equation2(float x, float y) {
-  return ${eq2};
-}`,
-      FN_GRADIENT: glslGradient(t),
-    };
-    for (const k in replaceMap) {
-      fs = fs.replace(`#${k};`, replaceMap[k as keyof typeof replaceMap]);
+      themeCache.value = t;
+
+      let fs = fragment;
+      const replaceMap = {
+        FN_EQ1: `float equation1(float x, float y){ return ${eq1}; }`,
+        FN_EQ2: `float equation2(float x, float y){ return ${eq2}; }`,
+        FN_GRADIENT: glslGradient(t),
+      };
+
+      for (const k in replaceMap) {
+        fs = fs.replace(`#${k};`, replaceMap[k as keyof typeof replaceMap]);
+      }
+
+      if (program) gl.deleteProgram(program);
+
+      program = gl.createProgram()!;
+      gl.attachShader(program, sh(gl.VERTEX_SHADER, vs));
+      gl.attachShader(program, sh(gl.FRAGMENT_SHADER, fs));
+      gl.linkProgram(program);
+
+      uScale = gl.getUniformLocation(program, "viewportScale");
+      uX = gl.getUniformLocation(program, "viewportX");
+      uY = gl.getUniformLocation(program, "viewportY");
+      uW = gl.getUniformLocation(program, "width");
+      uH = gl.getUniformLocation(program, "height");
+      uFalloff = gl.getUniformLocation(program, "falloff");
     }
 
+    gl.useProgram(program);
     gl.viewport(0, 0, gl.drawingBufferWidth, gl.drawingBufferHeight);
     gl.clearColor(0, 0, 0, 1);
     gl.clear(gl.COLOR_BUFFER_BIT);
 
-    const program = gl.createProgram();
-    gl.attachShader(program, sh(gl, gl.VERTEX_SHADER, vs));
-    gl.attachShader(program, sh(gl, gl.FRAGMENT_SHADER, fs));
-    gl.linkProgram(program);
-    gl.useProgram(program);
+    gl.uniform1f(uScale!, viewportScale.value);
+    gl.uniform1f(uX!, viewportX.value);
+    gl.uniform1f(uY!, viewportY.value);
+    gl.uniform1f(uW!, width);
+    gl.uniform1f(uH!, height);
+    gl.uniform1f(uFalloff!, falloff.value);
 
-    const buf = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-    gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]), gl.STATIC_DRAW);
-
     const loc = gl.getAttribLocation(program, "p");
     gl.enableVertexAttribArray(loc);
     gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
 
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
 
-    const err = gl.getProgramInfoLog(program);
-    if (err) {
-      errorMsg.value = err;
-    } else {
-      errorMsg.value = "";
-    }
+    errorMsg.value = gl.getProgramInfoLog(program) || "";
+
   } catch (e) {
     errorMsg.value = (e as Error).message;
   }
 };
+
 
 defineExpose({ vis });
 </script>
