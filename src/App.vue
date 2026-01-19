@@ -29,6 +29,10 @@ const theme = computed(() => {
   return lastValidCustom.value || themes[selectedTheme.value as keyof typeof themes];
 });
 
+const usingCustomTheme = computed(() => {
+  return theme.value !== themes[selectedTheme.value as keyof typeof themes];
+});
+
 const rendererRef = useTemplateRef("renderer");
 watch([equation1, equation2, theme, rendererRef], () => {
   rendererRef.value?.vis({ equation1: equation1.value, equation2: equation2.value, theme: theme.value });
@@ -60,7 +64,7 @@ watch([equation1, equation2, theme, rendererRef], () => {
             href="https://github.com/ghosh/uiGradients/blob/master/gradients.json">source 2</a>)
         </span>
       </p>
-      <ThemeDropdown :itemMap="themes" v-model="selectedTheme" />
+      <ThemeDropdown :itemMap="themes" v-model="selectedTheme" :disabled="usingCustomTheme" />
     </div>
     <div class="flex flex-col gap-2">
       <p>Custom Gradient</p>
