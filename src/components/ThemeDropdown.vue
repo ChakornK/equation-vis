@@ -17,7 +17,7 @@ const listVisible = ref(false);
 <template>
   <div class="relative z-10 w-64 select-none text-left">
     <div
-      :class="`flex items-center justify-between border border-neutral-600 bg-neutral-900 px-4 py-1 ${disabled ? 'cursor-default opacity-50' : 'cursor-pointer'}`"
+      :class="`flex items-center justify-between border border-neutral-700 bg-neutral-900 px-4 py-1 ${disabled ? 'cursor-default opacity-50' : 'cursor-pointer'}`"
       @click="listVisible = disabled ? false : !listVisible">
       <p>{{ selectedName }}</p>
       <div class="flex gap-2">
@@ -29,7 +29,7 @@ const listVisible = ref(false);
       </div>
     </div>
     <div v-show="listVisible && !disabled"
-      class="*:flex *:hover:bg-neutral-800 *:px-4 *:py-1 *:items-center *:justify-between absolute left-0 right-0 top-8 mt-px max-h-80 overflow-y-scroll border border-neutral-600 bg-neutral-900 text-sm">
+      class="*:flex *:hover:bg-neutral-800 *:px-4 *:py-1 *:items-center *:justify-between absolute left-0 right-0 top-8 mt-px max-h-80 overflow-y-scroll border border-neutral-700 bg-neutral-900 text-sm">
       <div v-for="(colors, name) in itemMap" @click="
         selectedName = name;
       listVisible = !listVisible;
