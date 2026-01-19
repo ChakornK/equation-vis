@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, useTemplateRef, watch, watchEffect } from "vue";
+import { ref, useTemplateRef, watch, computed } from "vue";
 import Renderer from "./components/Renderer.vue";
 import { themes } from "./lib/gradient";
 import ThemeDropdown from "./components/ThemeDropdown.vue";
@@ -7,7 +7,27 @@ import ThemeDropdown from "./components/ThemeDropdown.vue";
 const equation1 = ref("min(abs(y * (x^0.2 + y^0.2 - 4) * 67sin(x * y)), abs(y * (x^2 + y^2 - 4)))");
 const equation2 = ref("0");
 
-const theme = ref(themes["Argon"]);
+const selectedTheme = ref("Argon");
+const customGradient = ref("");
+const lastValidCustom = ref<string[] | null>(null);
+
+const parseGradient = (str: string) => {
+  if (!str.trim()) return null;
+  const colors = str.split(',').map(c => c.trim()).filter(c => /^#[0-9a-f]{6}$/i.test(c));
+  return colors.length > 1 ? colors : null;
+};
+
+const theme = computed(() => {
+  if (customGradient.value.trim() === '') {
+    return themes[selectedTheme.value as keyof typeof themes];
+  }
+  const custom = parseGradient(customGradient.value);
+  if (custom) {
+    lastValidCustom.value = custom;
+    return custom;
+  }
+  return lastValidCustom.value || themes[selectedTheme.value as keyof typeof themes];
+});
 
 const rendererRef = useTemplateRef("renderer");
 watch([equation1, equation2, theme, rendererRef], () => {
@@ -40,7 +60,12 @@ watch([equation1, equation2, theme, rendererRef], () => {
             href="https://github.com/ghosh/uiGradients/blob/master/gradients.json">source 2</a>)
         </span>
       </p>
-      <ThemeDropdown :itemMap="themes" v-model="theme" />
+      <ThemeDropdown :itemMap="themes" v-model="selectedTheme" />
+    </div>
+    <div class="flex flex-col gap-2">
+      <p>Custom Gradient</p>
+      <input type="text" class="border border-neutral-700 px-2 py-1 outline-0" v-model="customGradient"
+        placeholder="#ff0000, #00ff00, ..." />
     </div>
 
     <Renderer ref="renderer" />
