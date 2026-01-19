@@ -2,10 +2,11 @@
 import { computed, ref } from "vue";
 import CarbonChevronDown from "~icons/carbon/chevron-down";
 
-const { itemMap, modelValue, disabled } = defineProps<{
+const { itemMap, modelValue, disabled, currentTheme } = defineProps<{
   itemMap: Record<string, string[]>;
   modelValue: string;
   disabled?: boolean;
+  currentTheme?: string[];
 }>();
 const emit = defineEmits(["update:modelValue"]);
 
@@ -21,7 +22,8 @@ const listVisible = ref(false);
       <p>{{ selectedName }}</p>
       <div class="flex gap-2">
         <div class="flex items-stretch">
-          <div v-for="color in modelValue" :style="{ background: color }" class="h-4 w-2"></div>
+          <div v-for="color in (disabled ? currentTheme : itemMap[selectedName])" :style="{ background: color }"
+            class="h-4 w-2"></div>
         </div>
         <CarbonChevronDown class="h-4 w-4" />
       </div>
