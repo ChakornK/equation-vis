@@ -56,20 +56,23 @@ watch([equation1, equation2, theme, rendererRef], () => {
           placeholder="RHS" />
       </div>
     </div>
-    <div>
-      <p>
-        Theme
-        <span class="text-[0.625rem] text-neutral-400">
-          (<a href="https://github.com/axismaps/colorbrewer/blob/master/colorbrewer_schemes.js">source 1</a>, <a
-            href="https://github.com/ghosh/uiGradients/blob/master/gradients.json">source 2</a>)
-        </span>
-      </p>
-      <ThemeDropdown :itemMap="themes" v-model="selectedTheme" :disabled="usingCustomTheme" />
-    </div>
-    <div class="flex flex-col gap-2">
-      <p>Custom Gradient</p>
-      <input type="text" class="border border-neutral-700 px-2 py-1 outline-0" v-model="customGradient"
-        placeholder="#ff0000, #00ff00, ..." />
+    <div class="flex items-start gap-2">
+      <div>
+        <p>
+          Theme
+          <span class="text-[0.625rem] text-neutral-400">
+            (<a href="https://github.com/axismaps/colorbrewer/blob/master/colorbrewer_schemes.js">source 1</a>, <a
+              href="https://github.com/ghosh/uiGradients/blob/master/gradients.json">source 2</a>)
+          </span>
+        </p>
+        <ThemeDropdown :itemMap="themes" v-model="selectedTheme" :disabled="usingCustomTheme" />
+      </div>
+      <p>or</p>
+      <div>
+        <p>Custom Gradient</p>
+        <input type="text" class="border border-neutral-700 px-2 py-1 outline-0" v-model="customGradient"
+          placeholder="#ff0000, #00ff00, ..." />
+      </div>
     </div>
 
     <Renderer ref="renderer" />
