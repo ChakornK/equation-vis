@@ -15,26 +15,26 @@
     "format": "prettier --write --experimental-cli src/"
   },
   "dependencies": {
-    "@iconify-json/carbon": "^1.2.15",
+    "@iconify-json/carbon": "^1.2.18",
     "@tailwindcss/vite": "^4.1.18",
-    "mathjs": "^15.1.0",
+    "mathjs": "^15.1.1",
     "tailwindcss": "^4.1.18",
-    "vue": "^3.5.26"
+    "vue": "^3.5.28"
   },
   "devDependencies": {
     "@modyfi/vite-plugin-yaml": "^1.1.1",
-    "@tsconfig/node24": "^24.0.3",
-    "@types/node": "^25.0.3",
-    "@vitejs/plugin-vue": "^6.0.3",
+    "@tsconfig/node24": "^24.0.4",
+    "@types/node": "^25.2.3",
+    "@vitejs/plugin-vue": "^6.0.4",
     "@vue/tsconfig": "^0.8.1",
     "npm-run-all2": "^8.0.4",
-    "prettier": "3.7.4",
+    "prettier": "3.8.1",
     "typescript": "~5.9.3",
-    "unplugin-icons": "^22.5.0",
-    "unplugin-vue-components": "^30.0.0",
-    "vite": "^7.3.0",
+    "unplugin-icons": "23.0.1",
+    "unplugin-vue-components": "31.0.0",
+    "vite": "^7.3.1",
     "vite-plugin-glsl": "^1.5.5",
-    "vue-tsc": "^3.2.1"
+    "vue-tsc": "^3.2.4"
   },
   "packageManager": "yarn@4.12.0+sha512.f45ab632439a67f8bc759bf32ead036a1f413287b9042726b7cc4818b7b49e14e9423ba49b18f9e06ea4941c1ad062385b1d8760a8d5091a1a31e5f6219afca8"
 }
