@@ -61,8 +61,9 @@ watch([equation1, equation2, theme, rendererRef], () => {
         <p>
           Theme
           <span class="text-[0.625rem] text-neutral-400">
-            (<a href="https://github.com/axismaps/colorbrewer/blob/master/colorbrewer_schemes.js">source 1</a>, <a
-              href="https://github.com/ghosh/uiGradients/blob/master/gradients.json">source 2</a>)
+            (<a href="https://github.com/axismaps/colorbrewer/blob/master/colorbrewer_schemes.js" target="_blank">source
+              1</a>, <a href="https://github.com/ghosh/uiGradients/blob/master/gradients.json" target="_blank">source
+              2</a>)
           </span>
         </p>
         <ThemeDropdown :itemMap="themes" v-model="selectedTheme" :disabled="usingCustomTheme" />
