@@ -9,6 +9,10 @@
       "@/*": ["./src/*"]
     },
 
-    "types": ["vite-plugin-glsl/ext", "unplugin-icons/types/vue"]
+    "types": [
+      "vite-plugin-glsl/ext",
+      "unplugin-icons/types/vue",
+      "@modyfi/vite-plugin-yaml/modules"
+    ]
   }
 }

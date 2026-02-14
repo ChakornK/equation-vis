@@ -6,6 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 import glsl from "vite-plugin-glsl";
 import icons from "unplugin-icons/vite";
 import iconComponents from "unplugin-vue-components/vite";
+import yaml from "@modyfi/vite-plugin-yaml";
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -15,6 +16,7 @@ export default defineConfig({
     iconComponents({ dts: true }),
     tailwindcss(),
     glsl(),
+    yaml(),
   ],
   resolve: {
     alias: {

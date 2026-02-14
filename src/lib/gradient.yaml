@@ -1,0 +1,1389 @@
+# https://github.com/axismaps/colorbrewer/blob/master/colorbrewer_schemes.js
+OrRd:
+  - "#fff7ec"
+  - "#fee8c8"
+  - "#fdd49e"
+  - "#fdbb84"
+  - "#fc8d59"
+  - "#ef6548"
+  - "#d7301f"
+  - "#b30000"
+  - "#7f0000"
+PuBu:
+  - "#fff7fb"
+  - "#ece7f2"
+  - "#d0d1e6"
+  - "#a6bddb"
+  - "#74a9cf"
+  - "#3690c0"
+  - "#0570b0"
+  - "#045a8d"
+  - "#023858"
+BuPu:
+  - "#f7fcfd"
+  - "#e0ecf4"
+  - "#bfd3e6"
+  - "#9ebcda"
+  - "#8c96c6"
+  - "#8c6bb1"
+  - "#88419d"
+  - "#810f7c"
+  - "#4d004b"
+Oranges:
+  - "#fff5eb"
+  - "#fee6ce"
+  - "#fdd0a2"
+  - "#fdae6b"
+  - "#fd8d3c"
+  - "#f16913"
+  - "#d94801"
+  - "#a63603"
+  - "#7f2704"
+BuGn:
+  - "#f7fcfd"
+  - "#e5f5f9"
+  - "#ccece6"
+  - "#99d8c9"
+  - "#66c2a4"
+  - "#41ae76"
+  - "#238b45"
+  - "#006d2c"
+  - "#00441b"
+YlOrBr:
+  - "#ffffe5"
+  - "#fff7bc"
+  - "#fee391"
+  - "#fec44f"
+  - "#fe9929"
+  - "#ec7014"
+  - "#cc4c02"
+  - "#993404"
+  - "#662506"
+YlGn:
+  - "#ffffe5"
+  - "#f7fcb9"
+  - "#d9f0a3"
+  - "#addd8e"
+  - "#78c679"
+  - "#41ab5d"
+  - "#238443"
+  - "#006837"
+  - "#004529"
+Reds:
+  - "#fff5f0"
+  - "#fee0d2"
+  - "#fcbba1"
+  - "#fc9272"
+  - "#fb6a4a"
+  - "#ef3b2c"
+  - "#cb181d"
+  - "#a50f15"
+  - "#67000d"
+RdPu:
+  - "#fff7f3"
+  - "#fde0dd"
+  - "#fcc5c0"
+  - "#fa9fb5"
+  - "#f768a1"
+  - "#dd3497"
+  - "#ae017e"
+  - "#7a0177"
+  - "#49006a"
+Greens:
+  - "#f7fcf5"
+  - "#e5f5e0"
+  - "#c7e9c0"
+  - "#a1d99b"
+  - "#74c476"
+  - "#41ab5d"
+  - "#238b45"
+  - "#006d2c"
+  - "#00441b"
+YlGnBu:
+  - "#ffffd9"
+  - "#edf8b1"
+  - "#c7e9b4"
+  - "#7fcdbb"
+  - "#41b6c4"
+  - "#1d91c0"
+  - "#225ea8"
+  - "#253494"
+  - "#081d58"
+Purples:
+  - "#fcfbfd"
+  - "#efedf5"
+  - "#dadaeb"
+  - "#bcbddc"
+  - "#9e9ac8"
+  - "#807dba"
+  - "#6a51a3"
+  - "#54278f"
+  - "#3f007d"
+GnBu:
+  - "#f7fcf0"
+  - "#e0f3db"
+  - "#ccebc5"
+  - "#a8ddb5"
+  - "#7bccc4"
+  - "#4eb3d3"
+  - "#2b8cbe"
+  - "#0868ac"
+  - "#084081"
+Greys:
+  - "#ffffff"
+  - "#f0f0f0"
+  - "#d9d9d9"
+  - "#bdbdbd"
+  - "#969696"
+  - "#737373"
+  - "#525252"
+  - "#252525"
+  - "#000000"
+YlOrRd:
+  - "#ffffcc"
+  - "#ffeda0"
+  - "#fed976"
+  - "#feb24c"
+  - "#fd8d3c"
+  - "#fc4e2a"
+  - "#e31a1c"
+  - "#bd0026"
+  - "#800026"
+PuRd:
+  - "#f7f4f9"
+  - "#e7e1ef"
+  - "#d4b9da"
+  - "#c994c7"
+  - "#df65b0"
+  - "#e7298a"
+  - "#ce1256"
+  - "#980043"
+  - "#67001f"
+Blues:
+  - "#f7fbff"
+  - "#deebf7"
+  - "#c6dbef"
+  - "#9ecae1"
+  - "#6baed6"
+  - "#4292c6"
+  - "#2171b5"
+  - "#08519c"
+  - "#08306b"
+PuBuGn:
+  - "#fff7fb"
+  - "#ece2f0"
+  - "#d0d1e6"
+  - "#a6bddb"
+  - "#67a9cf"
+  - "#3690c0"
+  - "#02818a"
+  - "#016c59"
+  - "#014636"
+
+# https://github.com/ghosh/uiGradients/blob/master/gradients.json
+Omolon:
+  - "#2d9ee0"
+  - "#2f80ed"
+  - "#091e3a"
+Farhan:
+  - "#4b0082"
+  - "#9400d3"
+Purple:
+  - "#f15f79"
+  - "#c84e89"
+Ibtesam:
+  - "#00d9f5"
+  - "#00f5a0"
+Radioactive Heat:
+  - "#00a651"
+  - "#72c6ef"
+  - "#f7941e"
+The Sky And The Sea:
+  - "#004e8f"
+  - "#f7941e"
+From Ice To Fire:
+  - "#004e8f"
+  - "#72c6ef"
+Blue & Orange:
+  - "#0085ca"
+  - "#fd8112"
+Purple Dream:
+  - "#a811da"
+  - "#bf5ae0"
+Blu:
+  - "#e4e5e6"
+  - "#00416a"
+Summer Breeze:
+  - "#abecd6"
+  - "#fbed96"
+Ver:
+  - "#799f0c"
+  - "#ffe000"
+Ver Black:
+  - "#acbb78"
+  - "#f7f8f8"
+Combi:
+  - "#ffe000"
+  - "#799f0c"
+  - "#00416a"
+Anwar:
+  - "#cbcaa5"
+  - "#334d50"
+Bluelagoo:
+  - "#6fb1fc"
+  - "#4364f7"
+  - "#0052d4"
+Lunada:
+  - "#a5fecb"
+  - "#20bdff"
+  - "#5433ff"
+Reaqua:
+  - "#acbb78"
+  - "#799f0c"
+Mango:
+  - "#ffa751"
+  - "#ffe259"
+Bupe:
+  - "#e4e5e6"
+  - "#00416a"
+Rea:
+  - "#799f0c"
+  - "#ffe000"
+Windy:
+  - "#86fde8"
+  - "#acb6e5"
+Royal Blue:
+  - "#292e49"
+  - "#536976"
+Royal Blue + Petrol:
+  - "#292e49"
+  - "#536976"
+  - "#bbd2c5"
+Copper:
+  - "#94716b"
+  - "#b79891"
+Anamnisar:
+  - "#fbc7d4"
+  - "#9796f0"
+Petrol:
+  - "#536976"
+  - "#bbd2c5"
+Sky:
+  - "#fff"
+  - "#076585"
+Sel:
+  - "#a5cc82"
+  - "#00467f"
+Afternoon:
+  - "#607d8b"
+  - "#000c40"
+Skyline:
+  - "#2b32b2"
+  - "#1488cc"
+DIMIGO:
+  - "#fc6767"
+  - "#ec008c"
+Purple Love:
+  - "#753a88"
+  - "#cc2b5e"
+Sexy Blue:
+  - "#6dd5ed"
+  - "#2193b0"
+Blooker20:
+  - "#f9d423"
+  - "#e65c00"
+Sea Blue:
+  - "#4e4376"
+  - "#2b5876"
+Nimvelo:
+  - "#26a0da"
+  - "#314755"
+Hazel:
+  - "#e684ae"
+  - "#79cbca"
+  - "#77a1d3"
+Noon to Dusk:
+  - "#bfe9ff"
+  - "#ff6e7f"
+YouTube:
+  - "#b31217"
+  - "#e52d27"
+Cool Brown:
+  - "#b29f94"
+  - "#603813"
+Harmonic Energy:
+  - "#f4d03f"
+  - "#16a085"
+Playing with Reds:
+  - "#ea384d"
+  - "#d31027"
+Sunny Days:
+  - "#e1f5c4"
+  - "#ede574"
+Green Beach:
+  - "#00cdac"
+  - "#02aab0"
+Intuitive Purple:
+  - "#9733ee"
+  - "#da22ff"
+Emerald Water:
+  - "#56b4d3"
+  - "#348f50"
+Lemon Twist:
+  - "#b5ac49"
+  - "#3ca55c"
+Monte Carlo:
+  - "#7aa1d2"
+  - "#dbd4b4"
+  - "#cc95c0"
+Horizon:
+  - "#e5e5be"
+  - "#003973"
+Rose Water:
+  - "#5fc3e4"
+  - "#e55d87"
+Frozen:
+  - "#e7e9bb"
+  - "#403b4a"
+Mango Pulp:
+  - "#edde5d"
+  - "#f09819"
+Bloody Mary:
+  - "#dd2476"
+  - "#ff512f"
+Aubergine:
+  - "#61045f"
+  - "#aa076b"
+Aqua Marine:
+  - "#26d0ce"
+  - "#1a2980"
+Sunrise:
+  - "#f09819"
+  - "#ff512f"
+Purple Paradise:
+  - "#f8cdda"
+  - "#1d2b64"
+Stripe:
+  - "#a6ffcb"
+  - "#12d8fa"
+  - "#1fa2ff"
+Sea Weed:
+  - "#3cd3ad"
+  - "#4cb8c4"
+Pinky:
+  - "#f7bb97"
+  - "#dd5e89"
+Cherry:
+  - "#f45c43"
+  - "#eb3349"
+Mojito:
+  - "#93f9b9"
+  - "#1d976c"
+Juicy Orange:
+  - "#ffc837"
+  - "#ff8008"
+Mirage:
+  - "#3a6073"
+  - "#16222a"
+Steel Gray:
+  - "#928dab"
+  - "#1f1c2c"
+Kashmir:
+  - "#516395"
+  - "#614385"
+Electric Violet:
+  - "#8e54e9"
+  - "#4776e6"
+Venice Blue:
+  - "#85d8ce"
+  - "#085078"
+Bora Bora:
+  - "#eaecc6"
+  - "#2bc0e4"
+Moss:
+  - "#71b280"
+  - "#134e5e"
+Shroom Haze:
+  - "#4389a2"
+  - "#5c258d"
+Mystic:
+  - "#d7dde8"
+  - "#757f9a"
+Midnight City:
+  - "#414345"
+  - "#232526"
+Sea Blizz:
+  - "#93edc7"
+  - "#1cd8d2"
+Opa:
+  - "#ffe47a"
+  - "#3d7eaa"
+Titanium:
+  - "#859398"
+  - "#283048"
+Mantle:
+  - "#514a9d"
+  - "#24c6dc"
+Dracula:
+  - "#4a569d"
+  - "#dc2424"
+Peach:
+  - "#ffedbc"
+  - "#ed4264"
+Moonrise:
+  - "#d6a4a4"
+  - "#dae2f8"
+Clouds:
+  - "#ffffff"
+  - "#ece9e6"
+Stellar:
+  - "#348ac7"
+  - "#7474bf"
+Bourbon:
+  - "#f3a183"
+  - "#ec6f66"
+Calm Darya:
+  - "#49a09d"
+  - "#5f2c82"
+Influenza:
+  - "#480048"
+  - "#c04848"
+Shrimpy:
+  - "#e65245"
+  - "#e43a15"
+Army:
+  - "#727a17"
+  - "#414d0b"
+Miaka:
+  - "#0abfbc"
+  - "#fc354c"
+Pinot Noir:
+  - "#182848"
+  - "#4b6cb7"
+Day Tripper:
+  - "#ff5858"
+  - "#f857a6"
+Namn:
+  - "#7a2828"
+  - "#a73737"
+Blurry Beach:
+  - "#cbad6d"
+  - "#d53369"
+Vasily:
+  - "#333333"
+  - "#e9d362"
+A Lost Memory:
+  - "#ffb88c"
+  - "#de6262"
+Petrichor:
+  - "#999966"
+  - "#666600"
+Jonquil:
+  - "#ddefbb"
+  - "#ffeeee"
+Sirius Tamed:
+  - "#d4d3dd"
+  - "#efefbb"
+Kyoto:
+  - "#ffc500"
+  - "#c21500"
+Misty Meadow:
+  - "#e4e4d9"
+  - "#215f00"
+Aqualicious:
+  - "#96deda"
+  - "#50c9c3"
+Moor:
+  - "#9bc5c3"
+  - "#616161"
+Almost:
+  - "#faaca8"
+  - "#ddd6f3"
+Forever Lost:
+  - "#a8caba"
+  - "#5d4157"
+Winter:
+  - "#274046"
+  - "#e6dada"
+Nelson:
+  - "#ff9472"
+  - "#f2709c"
+Autumn:
+  - "#b0dab9"
+  - "#dad299"
+Candy:
+  - "#bfe6ba"
+  - "#d3959b"
+Reef:
+  - "#3a7bd5"
+  - "#00d2ff"
+The Strain:
+  - "#190a05"
+  - "#870000"
+Dirty Fog:
+  - "#8ca6db"
+  - "#b993d6"
+Earthly:
+  - "#dbd5a4"
+  - "#649173"
+Virgin:
+  - "#ffafbd"
+  - "#c9ffbf"
+Ash:
+  - "#3f4c6b"
+  - "#606c88"
+Cherryblossoms:
+  - "#bb377d"
+  - "#fbd3e9"
+Parklife:
+  - "#7b920a"
+  - "#add100"
+Dance To Forget:
+  - "#f9d423"
+  - "#ff4e50"
+Starfall:
+  - "#4b1248"
+  - "#f0c27b"
+Red Mist:
+  - "#e74c3c"
+  - "#000000"
+Teal Love:
+  - "#11ffbd"
+  - "#aaffa9"
+Neon Life:
+  - "#12fff7"
+  - "#b3ffab"
+Man of Steel:
+  - "#061161"
+  - "#780206"
+Amethyst:
+  - "#6e48aa"
+  - "#9d50bb"
+Cheer Up Emo Kid:
+  - "#ff6b6b"
+  - "#556270"
+Shore:
+  - "#ffd194"
+  - "#70e1f5"
+Facebook Messenger:
+  - "#0072ff"
+  - "#00c6ff"
+SoundCloud:
+  - "#f83600"
+  - "#fe8c00"
+Behongo:
+  - "#061700"
+  - "#52c234"
+ServQuick:
+  - "#29323c"
+  - "#485563"
+Friday:
+  - "#b6fbff"
+  - "#83a4d4"
+Martini:
+  - "#24fe41"
+  - "#fdfc47"
+Metallic Toad:
+  - "#ffffff"
+  - "#abbaab"
+Between The Clouds:
+  - "#373b44"
+  - "#73c8a9"
+Crazy Orange I:
+  - "#a83279"
+  - "#d38312"
+Hersheys:
+  - "#9a8478"
+  - "#1e130c"
+Talking To Mice Elf:
+  - "#2e1437"
+  - "#948e99"
+Purple Bliss:
+  - "#0b8793"
+  - "#360033"
+Predawn:
+  - "#00223e"
+  - "#ffa17f"
+Endless River:
+  - "#185a9d"
+  - "#43cea2"
+Pastel Orange at the Sun:
+  - "#ffcc33"
+  - "#ffb347"
+Twitch:
+  - "#2a0845"
+  - "#6441a5"
+Atlas:
+  - "#4bc0c8"
+  - "#c779d0"
+  - "#feac5e"
+Instagram:
+  - "#fcb045"
+  - "#fd1d1d"
+  - "#833ab4"
+Flickr:
+  - "#33001b"
+  - "#ff0084"
+Vine:
+  - "#001510"
+  - "#00bf8f"
+Turquoise flow:
+  - "#267871"
+  - "#136a8a"
+Portrait:
+  - "#eef2f3"
+  - "#8e9eab"
+Virgin America:
+  - "#dc2430"
+  - "#7b4397"
+Koko Caramel:
+  - "#ffd194"
+  - "#d1913c"
+Fresh Turboscent:
+  - "#135058"
+  - "#f1f2b5"
+Green to dark:
+  - "#141517"
+  - "#6a9113"
+Ukraine:
+  - "#fff94c"
+  - "#004ff9"
+Curiosity blue:
+  - "#3d72b4"
+  - "#525252"
+Dark Knight:
+  - "#181818"
+  - "#ba8b02"
+Piglet:
+  - "#ffdde1"
+  - "#ee9ca7"
+Lizard:
+  - "#d7d2cc"
+  - "#304352"
+Sage Persuasion:
+  - "#757519"
+  - "#ccccb2"
+Between Night and Day:
+  - "#3498db"
+  - "#2c3e50"
+Timber:
+  - "#00dbde"
+  - "#fc00ff"
+Passion:
+  - "#e35d5b"
+  - "#e53935"
+Clear Sky:
+  - "#363795"
+  - "#005c97"
+Master Card:
+  - "#eea849"
+  - "#f46b45"
+Back To Earth:
+  - "#92fe9d"
+  - "#00c9ff"
+Deep Purple:
+  - "#512da8"
+  - "#673ab7"
+Little Leaf:
+  - "#8dc26f"
+  - "#76b852"
+Netflix:
+  - "#1f1c18"
+  - "#8e0e00"
+Light Orange:
+  - "#ed8f03"
+  - "#ffb75e"
+Green and Blue:
+  - "#64b3f4"
+  - "#c2e59c"
+Poncho:
+  - "#be5869"
+  - "#403a3e"
+Back to the Future:
+  - "#f0cb35"
+  - "#c02425"
+Blush:
+  - "#f15f79"
+  - "#b24592"
+Inbox:
+  - "#5691c8"
+  - "#457fca"
+Purplin:
+  - "#a044ff"
+  - "#6a3093"
+Pale Wood:
+  - "#d6ae7b"
+  - "#eacda3"
+Haikus:
+  - "#ff9068"
+  - "#fd746c"
+Pizelex:
+  - "#f29492"
+  - "#114357"
+Joomla:
+  - "#2a5298"
+  - "#1e3c72"
+Christmas:
+  - "#aa3a38"
+  - "#2f7336"
+Minnesota Vikings:
+  - "#dbd65c"
+  - "#5614b0"
+Miami Dolphins:
+  - "#d39d38"
+  - "#4da0b0"
+Forest:
+  - "#2c7744"
+  - "#5a3f37"
+Nighthawk:
+  - "#2c3e50"
+  - "#2980b9"
+Superman:
+  - "#f11712"
+  - "#0099f7"
+Suzy:
+  - "#d04ed6"
+  - "#834d9b"
+Dark Skies:
+  - "#283e51"
+  - "#4b79a1"
+Deep Space:
+  - "#434343"
+  - "#000000"
+Decent:
+  - "#c4e0e5"
+  - "#4ca1af"
+Colors Of Sky:
+  - "#cfdef3"
+  - "#e0eafc"
+Purple White:
+  - "#f4e2d8"
+  - "#ba5370"
+Ali:
+  - "#1fddff"
+  - "#ff4b1f"
+Alihossein:
+  - "#db36a4"
+  - "#f7ff00"
+Shahabi:
+  - "#66ff00"
+  - "#a80077"
+Red Ocean:
+  - "#a43931"
+  - "#1d4350"
+Tranquil:
+  - "#ef629f"
+  - "#eecda3"
+Transfile:
+  - "#cb3066"
+  - "#16bffd"
+Sylvia:
+  - "#ff9068"
+  - "#ff4b1f"
+Sweet Morning:
+  - "#ffc371"
+  - "#ff5f6d"
+Politics:
+  - "#f44336"
+  - "#2196f3"
+Bright Vault:
+  - "#928dab"
+  - "#00d2ff"
+Solid Vault:
+  - "#3a6073"
+  - "#3a7bd5"
+Sunset:
+  - "#f56217"
+  - "#0b486b"
+Grapefruit Sunset:
+  - "#904e95"
+  - "#e96443"
+Deep Sea Space:
+  - "#4ca1af"
+  - "#2c3e50"
+Dusk:
+  - "#fd746c"
+  - "#2c3e50"
+Minimal Red:
+  - "#dc281e"
+  - "#f00000"
+Royal:
+  - "#243b55"
+  - "#141e30"
+Mauve:
+  - "#734b6d"
+  - "#42275a"
+Frost:
+  - "#004e92"
+  - "#000428"
+Lush:
+  - "#a8e063"
+  - "#56ab2f"
+Firewatch:
+  - "#ef473a"
+  - "#cb2d3e"
+Sherbert:
+  - "#64f38c"
+  - "#f79d00"
+Blood Red:
+  - "#e73827"
+  - "#f85032"
+Sun on the Horizon:
+  - "#f8b500"
+  - "#fceabb"
+IIIT Delhi:
+  - "#3fada8"
+  - "#808080"
+Jupiter:
+  - "#19547b"
+  - "#ffd89b"
+50 Shades of Grey:
+  - "#2c3e50"
+  - "#bdc3c7"
+Dania:
+  - "#7bc6cc"
+  - "#be93c5"
+Limeade:
+  - "#faffd1"
+  - "#a1ffce"
+Disco:
+  - "#556270"
+  - "#4ecdc4"
+Love Couple:
+  - "#89253e"
+  - "#3a6186"
+Azure Pop:
+  - "#89fffd"
+  - "#ef32d9"
+Nepal:
+  - "#2657eb"
+  - "#de6161"
+Cosmic Fusion:
+  - "#333399"
+  - "#ff00cc"
+Snapchat:
+  - "#ffffff"
+  - "#fffc00"
+Ed's Sunset Gradient:
+  - "#feb47b"
+  - "#ff7e5f"
+Brady Brady Fun Fun:
+  - "#ffff1c"
+  - "#00c3ff"
+Black Rosé:
+  - "#fc67fa"
+  - "#f4c4f3"
+80's Purple:
+  - "#2f0743"
+  - "#41295a"
+Radar:
+  - "#fdb99b"
+  - "#cf8bf3"
+  - "#a770ef"
+Ibiza Sunset:
+  - "#ff6a00"
+  - "#ee0979"
+Dawn:
+  - "#3b4371"
+  - "#f3904f"
+Mild:
+  - "#4ca2cd"
+  - "#67b26f"
+Vice City:
+  - "#ec6ead"
+  - "#3494e6"
+Jaipur:
+  - "#c5796d"
+  - "#dbe6f6"
+Jodhpur:
+  - "#0052d4"
+  - "#65c7f7"
+  - "#9cecfb"
+Cocoaa Ice:
+  - "#1cefff"
+  - "#c0c0aa"
+EasyMed:
+  - "#45b649"
+  - "#dce35b"
+Rose Colored Lenses:
+  - "#636fa4"
+  - "#e8cbc0"
+What lies Beyond:
+  - "#000c40"
+  - "#f0f2f0"
+Roseanna:
+  - "#ffc3a0"
+  - "#ffafbd"
+Honey Dew:
+  - "#f8ffae"
+  - "#43c6ac"
+Under the Lake:
+  - "#237a57"
+  - "#093028"
+The Blue Lagoon:
+  - "#191654"
+  - "#43c6ac"
+Can You Feel The Love Tonight:
+  - "#b06ab3"
+  - "#4568dc"
+Very Blue:
+  - "#021b79"
+  - "#0575e6"
+Love and Liberty:
+  - "#6f0000"
+  - "#200122"
+Orca:
+  - "#093637"
+  - "#44a08d"
+Venice:
+  - "#a7bfe8"
+  - "#6190e8"
+Pacific Dream:
+  - "#0f3443"
+  - "#34e89e"
+Learning and Leading:
+  - "#ffd200"
+  - "#f7971e"
+Celestial:
+  - "#1d2671"
+  - "#c33764"
+Purplepine:
+  - "#cbb4d4"
+  - "#20002c"
+Sha la la:
+  - "#e29587"
+  - "#d66d75"
+Mini:
+  - "#ff8235"
+  - "#30e8bf"
+Maldives:
+  - "#0ed2f7"
+  - "#b2fefa"
+Cinnamint:
+  - "#bdfff3"
+  - "#4ac29a"
+Html:
+  - "#f16529"
+  - "#e44d26"
+Coal:
+  - "#000000"
+  - "#eb5757"
+Sunkist:
+  - "#f2c94c"
+  - "#f2994a"
+Blue Skies:
+  - "#2f80ed"
+  - "#56ccf2"
+Chitty Chitty Bang Bang:
+  - "#78ffd6"
+  - "#007991"
+Visions of Grandeur:
+  - "#1cb5e0"
+  - "#000046"
+Crystal Clear:
+  - "#155799"
+  - "#159957"
+Mello:
+  - "#8e44ad"
+  - "#c0392b"
+Compare Now:
+  - "#ffffff"
+  - "#ef3b36"
+Meridian:
+  - "#45a247"
+  - "#283c86"
+Relay:
+  - "#ffaf7b"
+  - "#d76d77"
+  - "#3a1c71"
+Alive:
+  - "#bd3f32"
+  - "#cb356b"
+Scooter:
+  - "#5b86e5"
+  - "#36d1dc"
+Terminal:
+  - "#0f9b0f"
+  - "#000000"
+Telegram:
+  - "#f2fcfe"
+  - "#1c92d2"
+Crimson Tide:
+  - "#c6426e"
+  - "#642b73"
+Socialive:
+  - "#48b1bf"
+  - "#06beb6"
+Subu:
+  - "#29ffc6"
+  - "#20e3b2"
+  - "#0cebeb"
+Broken Hearts:
+  - "#fffcdc"
+  - "#d9a7c7"
+Kimoby Is The New Blue:
+  - "#2948ff"
+  - "#396afc"
+Dull:
+  - "#e2e2e2"
+  - "#c9d6ff"
+Purpink:
+  - "#e100ff"
+  - "#7f00ff"
+Orange Coral:
+  - "#ff5e62"
+  - "#ff9966"
+Summer:
+  - "#fdbb2d"
+  - "#22c1c3"
+King Yna:
+  - "#fdbb2d"
+  - "#b21f1f"
+  - "#1a2a6c"
+Velvet Sun:
+  - "#f05053"
+  - "#e1eec3"
+Zinc:
+  - "#eaeaea"
+  - "#dbdbdb"
+  - "#f2f2f2"
+  - "#ada996"
+Hydrogen:
+  - "#667db6"
+  - "#0082c8"
+  - "#0082c8"
+  - "#667db6"
+Argon:
+  - "#fdeff9"
+  - "#ec38bc"
+  - "#7303c0"
+  - "#03001e"
+Lithium:
+  - "#d3cbb8"
+  - "#6d6027"
+Digital Water:
+  - "#acb6e5"
+  - "#74ebd5"
+Orange Fun:
+  - "#f7b733"
+  - "#fc4a1a"
+Rainbow Blue:
+  - "#0575e6"
+  - "#00f260"
+Pink Flavour:
+  - "#ffc0cb"
+  - "#800080"
+Sulphur:
+  - "#f3f9a7"
+  - "#cac531"
+Selenium:
+  - "#605c3c"
+  - "#3c3b3f"
+Delicate:
+  - "#e9e4f0"
+  - "#d3cce3"
+Ohhappiness:
+  - "#96c93d"
+  - "#00b09b"
+Lawrencium:
+  - "#24243e"
+  - "#302b63"
+  - "#0f0c29"
+Relaxing red:
+  - "#b20a2c"
+  - "#fffbd5"
+Taran Tado:
+  - "#cc5333"
+  - "#23074d"
+Bighead:
+  - "#4b134f"
+  - "#c94b4b"
+Sublime Vivid:
+  - "#3f5efb"
+  - "#fc466b"
+Sublime Light:
+  - "#6a82fb"
+  - "#fc5c7d"
+Pun Yeta:
+  - "#ef8e38"
+  - "#108dc7"
+Quepal:
+  - "#38ef7d"
+  - "#11998e"
+Sand to Blue:
+  - "#decba4"
+  - "#3e5151"
+Wedding Day Blues:
+  - "#ff0080"
+  - "#ff8c00"
+  - "#40e0d0"
+Shifter:
+  - "#f80759"
+  - "#bc4e9c"
+Red Sunset:
+  - "#c06c84"
+  - "#6c5b7b"
+  - "#355c7d"
+Moon Purple:
+  - "#8f94fb"
+  - "#4e54c8"
+Pure Lust:
+  - "#dd1818"
+  - "#333333"
+Slight Ocean View:
+  - "#3f2b96"
+  - "#a8c0ff"
+eXpresso:
+  - "#3c1053"
+  - "#ad5389"
+Shifty:
+  - "#a2ab58"
+  - "#636363"
+Vanusa:
+  - "#89216b"
+  - "#da4453"
+Evening Night:
+  - "#fffde4"
+  - "#005aa7"
+Magic:
+  - "#5d26c1"
+  - "#a17fe0"
+  - "#59c173"
+Margo:
+  - "#ffffff"
+  - "#ffefba"
+Blue Raspberry:
+  - "#0083b0"
+  - "#00b4db"
+Citrus Peel:
+  - "#f37335"
+  - "#fdc830"
+Sin City Red:
+  - "#93291e"
+  - "#ed213a"
+Rastafari:
+  - "#ff0000"
+  - "#fff200"
+  - "#1e9600"
+Summer Dog:
+  - "#78ffd6"
+  - "#a8ff78"
+Wiretap:
+  - "#f27121"
+  - "#e94057"
+  - "#8a2387"
+Burning Orange:
+  - "#ff4b2b"
+  - "#ff416c"
+Ultra Voilet:
+  - "#eaafc8"
+  - "#654ea3"
+By Design:
+  - "#ec2f4b"
+  - "#009fff"
+Kyoo Tah:
+  - "#ffd452"
+  - "#544a7d"
+Kye Meh:
+  - "#2ebf91"
+  - "#8360c3"
+Kyoo Pal:
+  - "#6be585"
+  - "#dd3e54"
+Metapolis:
+  - "#f4791f"
+  - "#659999"
+Flare:
+  - "#f5af19"
+  - "#f12711"
+Witching Hour:
+  - "#240b36"
+  - "#c31432"
+Azur Lane:
+  - "#91eae4"
+  - "#86a8e7"
+  - "#7f7fd5"
+Neuromancer:
+  - "#b91d73"
+  - "#f953c6"
+Harvey:
+  - "#99f2c8"
+  - "#1f4037"
+Amin:
+  - "#4a00e0"
+  - "#8e2de2"
+Memariani:
+  - "#3b8d99"
+  - "#6b6b83"
+  - "#aa4b6b"
+Yoda:
+  - "#493240"
+  - "#ff0099"
+Cool Sky:
+  - "#ffffff"
+  - "#6dd5fa"
+  - "#2980b9"
+Dark Ocean:
+  - "#4286f4"
+  - "#373b44"
+Evening Sunshine:
+  - "#1565c0"
+  - "#b92b27"
+JShine:
+  - "#f64f59"
+  - "#c471ed"
+  - "#12c2e9"
+Moonlit Asteroid:
+  - "#2c5364"
+  - "#203a43"
+  - "#0f2027"
+MegaTron:
+  - "#f7797d"
+  - "#fbd786"
+  - "#c6ffdd"
+Cool Blues:
+  - "#6dd5ed"
+  - "#2193b0"
+Piggy Pink:
+  - "#ffdde1"
+  - "#ee9ca7"
+Grade Grey:
+  - "#2c3e50"
+  - "#bdc3c7"
+Telko:
+  - "#007fc3"
+  - "#5cb644"
+  - "#f36222"
+Zenta:
+  - "#fecb6e"
+  - "#2a2d3e"
+Electric Peacock:
+  - "#ccff00"
+  - "#228b22"
+  - "#0000cd"
+  - "#8a2be2"
+Under Blue Green:
+  - "#a8eb12"
+  - "#00bf72"
+  - "#008793"
+  - "#004d7a"
+  - "#051937"
+Lensod:
+  - "#ff5555"
+  - "#6025f5"
+Newspaper:
+  - "#f8f8ff"
+  - "#ffa500"
+  - "#8a2be2"
+Dark Blue Gradient:
+  - "#002e5d"
+  - "#002e5d"
+  - "#2774ae"
+Dark Blu Two:
+  - "#4484ba"
+  - "#004680"
+Lemon Lime:
+  - "#ebe717"
+  - "#7ec6bc"
+Beleko:
+  - "#1e90ff"
+  - "#f9c942"
+  - "#ff1e56"
+Mango Papaya:
+  - "#2ada53"
+  - "#de8a41"
+Unicorn Rainbow:
+  - "#f0acf7"
+  - "#acf7f0"
+  - "#f7f0ac"
+Flame:
+  - "#fdcf58"
+  - "#ff0000"
+Blue Red:
+  - "#960b33"
+  - "#36b1c7"
+Twitter:
+  - "#009ffc"
+  - "#1da1f2"
+Blooze:
+  - "#6da6be"
+  - "#4b859e"
+  - "#6da6be"
+Blue Slate:
+  - "#2b2c49"
+  - "#b5b9ff"
+Space Light Green:
+  - "#5c7852"
+  - "#9fa0a8"
+Flower:
+  - "#cc86d1"
+  - "#dcffbd"
+Elate The Euge:
+  - ef9393
+  - e17dc2
+  - 998ee0
+  - 43add0
+  - "#8bdeda"
+Peach Sea:
+  - "#a8cecf"
+  - "#e6ae8c"
+Abbas:
+  - "#0083fe"
+  - "#00fff0"
+Winter Woods:
+  - "#a43931"
+  - "#a2ab58"
+  - "#333333"
+Ameena:
+  - "#023c0d"
+  - "#5bb226"
+  - "#98d0c1"
+  - "#de512b"
+  - "#0c0c6d"
+Emerald Sea:
+  - "#5cdb95"
+  - "#05386b"
+Bleem:
+  - "#29eac4"
+  - "#4284db"
+Coffee Gold:
+  - "#c99846"
+  - "#554023"
+Compass:
+  - "#056b3b"
+  - "#516b8b"
+Andreuzza's:
+  - "#ff025e"
+  - "#d70652"
+Moonwalker:
+  - "#000000"
+  - "#152331"
+Whinehouse:
+  - "#111111"
+  - "#4e2020"
+  - "#794747"
+  - "#b9a0a0"
+  - "#f7f7f7"
+Hyper Blue:
+  - "#0a2a88"
+  - "#59cde9"
+Racker:
+  - "#3300fc"
+  - "#95008a"
+  - "#eb0000"
+After the Rain:
+  - "#cd93ff"
+  - "#70e2ff"
+  - "#9fff5b"
+  - "#ffe83f"
+  - "#ffa647"
+  - "#ff75c3"
+Neon Green:
+  - "#64965e"
+  - "#81ff8a"
+Dusty Grass:
+  - "#96e6a1"
+  - "#d4fc79"
+Visual Blue:
+  - "#00c996"
+  - "#003d4d"
