@@ -10,6 +10,7 @@ const equation2 = ref("0");
 const selectedTheme = ref("Argon");
 const customGradient = ref("");
 const lastValidCustom = ref<string[] | null>(null);
+const reverseGradient = ref(false);
 
 const parseGradient = (str: string) => {
   if (!str.trim()) return null;
@@ -34,8 +35,12 @@ const usingCustomTheme = computed(() => {
 });
 
 const rendererRef = useTemplateRef("renderer");
-watch([equation1, equation2, theme, rendererRef], () => {
-  rendererRef.value?.vis({ equation1: equation1.value, equation2: equation2.value, theme: theme.value });
+watch([equation1, equation2, theme, reverseGradient, rendererRef], () => {
+  rendererRef.value?.vis({
+    equation1: equation1.value,
+    equation2: equation2.value,
+    theme: reverseGradient.value ? theme.value.toReversed() : theme.value
+  });
 });
 </script>
 
@@ -74,6 +79,10 @@ watch([equation1, equation2, theme, rendererRef], () => {
         <input type="text" class="border border-neutral-700 px-2 py-1 outline-0" v-model="customGradient"
           placeholder="#ff0000, #00ff00, ..." />
       </div>
+    </div>
+    <div class="flex select-none items-center gap-2">
+      <label for="reverse-gradient">Reverse Gradient</label>
+      <input type="checkbox" v-model="reverseGradient" id="reverse-gradient" />
     </div>
 
     <Renderer ref="renderer" />
